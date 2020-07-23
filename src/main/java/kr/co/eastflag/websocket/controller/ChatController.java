@@ -1,31 +1,24 @@
 package kr.co.eastflag.websocket.controller;
 
-import kr.co.eastflag.websocket.dto.ChatRoom;
-import kr.co.eastflag.websocket.service.ChatService;
+import kr.co.eastflag.websocket.dto.ChatMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.stereotype.Controller;
 
-import java.util.List;
-
+// Publisher
 @Slf4j
 @RequiredArgsConstructor
-@RestController
-@RequestMapping("/chat")
+@Controller
 public class ChatController {
+    private final SimpMessageSendingOperations messagingTemplate;
 
-    private final ChatService chatService;
+    @MessageMapping("/chat/message")
+    public void message(ChatMessage message) {
+        if (ChatMessage.MessageType.ENTER.equals(message.getType()))
+            message.setMessage(message.getSender() + "님이 입장하셨습니다.");
 
-    @PostMapping
-    public ChatRoom createRoom(@RequestParam String name) {
-        return chatService.createRoom(name);
-    }
-
-    @GetMapping
-    public List<ChatRoom> findAllRoom() {
-        List<ChatRoom> roomList = chatService.findAllRoom();
-        log.debug("rooms : {}", roomList);
-        System.out.println("rooms: " + roomList);
-        return roomList;
+        messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
     }
 }

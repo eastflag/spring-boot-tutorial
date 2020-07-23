@@ -1,7 +1,7 @@
-package kr.co.eastflag.websocket.controller;
+package kr.co.eastflag.redis.controller;
 
-import kr.co.eastflag.websocket.redis.RedisPublisher;
-import kr.co.eastflag.websocket.redis.RedisSubscriber;
+import kr.co.eastflag.redis.config.RedisPublisher;
+import kr.co.eastflag.redis.config.RedisSubscriber;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;

@@ -1,4 +1,4 @@
-package kr.co.eastflag.websocket.redis;
+package kr.co.eastflag.redis.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

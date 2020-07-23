@@ -7,3 +7,10 @@ spring:
         min-idle: 2
     port: 6379
     host: db.v3.infiot.lgcns.com
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  freemarker:
+    cache: false

@@ -24,7 +24,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     // log4j2 mixed async
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-    implementation('com.lmax:disruptor:3.4.2')
+    implementation 'com.lmax:disruptor:3.4.2'
+
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'org.webjars.bower:bootstrap:4.3.1'
+    implementation 'org.webjars.bower:vue:2.6.9'
+    implementation 'org.webjars.bower:axios:0.17.1'
+    implementation 'org.webjars.bower:sockjs-client:1.4.0'
+    implementation 'org.webjars.bower:stomp-websocket:2.3.4'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {

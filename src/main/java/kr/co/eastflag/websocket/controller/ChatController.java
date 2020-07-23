@@ -1,12 +1,14 @@
 package kr.co.eastflag.websocket.controller;
 
 import kr.co.eastflag.websocket.dto.ChatRoom;
-import kr.co.eastflag.websocket.websocket.ChatService;
+import kr.co.eastflag.websocket.config.ChatService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/chat")
@@ -21,6 +23,9 @@ public class ChatController {
 
     @GetMapping
     public List<ChatRoom> findAllRoom() {
-        return chatService.findAllRoom();
+        List<ChatRoom> roomList = chatService.findAllRoom();
+        log.debug("rooms : {}", roomList);
+        System.out.println("rooms: " + roomList);
+        return roomList;
     }
 }

@@ -1,4 +1,4 @@
-package kr.co.eastflag.websocket.config;
+package kr.co.eastflag.redis.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package kr.co.eastflag.websocket.websocket;
+package kr.co.eastflag.websocket.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.eastflag.websocket.dto.ChatMessage;

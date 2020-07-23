@@ -1,4 +1,4 @@
-package kr.co.eastflag.websocket.redis;
+package kr.co.eastflag.redis.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

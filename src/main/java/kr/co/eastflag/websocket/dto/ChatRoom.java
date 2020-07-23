@@ -1,6 +1,6 @@
 package kr.co.eastflag.websocket.dto;
 
-import kr.co.eastflag.websocket.websocket.ChatService;
+import kr.co.eastflag.websocket.config.ChatService;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.web.socket.WebSocketSession;

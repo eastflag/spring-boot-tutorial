@@ -1,7 +1,7 @@
 package kr.co.eastflag.websocket.controller;
 
 import kr.co.eastflag.websocket.dto.ChatRoom;
-import kr.co.eastflag.websocket.config.ChatService;
+import kr.co.eastflag.websocket.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

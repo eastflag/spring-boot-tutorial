@@ -3,6 +3,7 @@ package kr.co.eastflag.websocket.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.eastflag.websocket.dto.ChatMessage;
 import kr.co.eastflag.websocket.dto.ChatRoom;
+import kr.co.eastflag.websocket.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;

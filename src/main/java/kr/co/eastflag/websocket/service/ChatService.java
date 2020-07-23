@@ -1,4 +1,4 @@
-package kr.co.eastflag.websocket.config;
+package kr.co.eastflag.websocket.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.eastflag.websocket.dto.ChatRoom;

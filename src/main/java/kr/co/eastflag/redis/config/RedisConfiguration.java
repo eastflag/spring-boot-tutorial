@@ -31,6 +31,11 @@ public class RedisConfiguration {
         return lettuceConnectionFactory;
     }
 
+    /**
+     * pub/sub 메시지를 처리하는 listener 설정
+     * @param connectionFactory
+     * @return
+     */
     @Bean
     public RedisMessageListenerContainer RedisMessageListener(RedisConnectionFactory connectionFactory) {
         RedisMessageListenerContainer container = new RedisMessageListenerContainer();
@@ -38,6 +43,10 @@ public class RedisConfiguration {
         return container;
     }
 
+    /**
+     * 어플리케이션에서 사용할 redisTemplate 설정
+     * @return
+     */
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();

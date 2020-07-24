@@ -1,6 +1,8 @@
 package kr.co.eastflag.websocket.controller;
 
+import kr.co.eastflag.redis.service.RedisPublisher;
 import kr.co.eastflag.websocket.dto.ChatMessage;
+import kr.co.eastflag.websocket.service.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -12,13 +14,20 @@ import org.springframework.stereotype.Controller;
 @RequiredArgsConstructor
 @Controller
 public class ChatController {
-    private final SimpMessageSendingOperations messagingTemplate;
+    private final RedisPublisher redisPublisher;
+    private final ChatRoomRepository chatRoomRepository;
 
+    /**
+     * websocket /pub/chat/message 로 들어오는 메시지를 처리
+     * @param message
+     */
     @MessageMapping("/chat/message")
     public void message(ChatMessage message) {
-        if (ChatMessage.MessageType.ENTER.equals(message.getType()))
-            message.setMessage(message.getSender() + "님이 입장하셨습니다.");
+        if (ChatMessage.MessageType.ENTER.equals(message.getType())) {
+            chatRoomRepository.enterChatRoom(message.getRoomId());
+            message.setMessage(message.getSender() + " joined");
+        }
 
-        messagingTemplate.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
+        redisPublisher.publish(chatRoomRepository.getTopic(message.getRoomId()), message.getMessage());
     }
 }
